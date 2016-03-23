@@ -1,0 +1,33 @@
+<div class="container">
+	<h3>User Administration</h3>
+	<table class='table'>
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>Apellidos</th>
+			<th>Edad</th>
+			<th>Matricula</th>
+		</tr>
+
+
+		<% _.each(maestros, function(maestro) { %>
+		<tr data-id="<%= maestro.id %>" data-model="maestro">
+			<td><%= maestro.id %></td>
+			<td><%= maestro.nombre %></td>
+			<td><%= maestro.apellidos %></td>
+			<td><%= maestro.edad %></td>
+			<td><%= maestro.matricula %></td>
+
+			<td><a href="/maestro/show/<%= maestro.id %>" class="btn btn-sm btn-primary">Show</a></td>
+			<td><a href="/maestro/edit/<%= maestro.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+
+			<td><form action="/maestro/destroy/<%= maestro.id %>" method="POST">
+				<input type="hidden" name="_method" value="delete"/>
+				<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			</form></td>
+		</tr>
+
+		<% }) %>
+	</table>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+	<h3>User Administration</h3>
+	<table class='table'>
+		<tr>
+			<th>ID</th>
+			<th>Titulo</th>
+			<th>Clave</th>
+		</tr>
+
+
+		<% _.each(clases, function(clase) { %>
+		<tr data-id="<%= clase.id %>" data-model="clase">
+			<td><%= clase.id %></td>
+			<td><%= clase.titulo %></td>
+			<td><%= clase.clave %></td>
+
+			<td><a href="/clase/show/<%= clase.id %>" class="btn btn-sm btn-primary">Show</a></td>
+			<td><a href="/clase/edit/<%= clase.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+
+			<td><form action="/clase/destroy/<%= clase.id %>" method="POST">
+				<input type="hidden" name="_method" value="delete"/>
+				<input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			</form></td>
+		</tr>
+
+		<% }) %>
+	</table>
+</div>

@@ -1,0 +1,8 @@
+
+<h1><%= maestro.nombre %></h1>
+<h3><%= maestro.matricula %></h3>
+<% _.each(maestro, function(m) { %>
+		<tr data-id="<%= m.id %>" data-model="maestro">
+			<td><%= m.clases %></td>
+		</tr>
+<% }) %>
